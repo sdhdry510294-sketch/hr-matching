@@ -56,12 +56,10 @@
     padding: 32px 24px 80px;
   }
 
-  /* Header */
   .header {
     margin-bottom: 36px;
     padding-bottom: 24px;
     border-bottom: 1px solid var(--ink);
-    position: relative;
   }
 
   .header-top {
@@ -96,19 +94,22 @@
     margin-top: 12px;
   }
 
-  /* Form */
   .field {
     margin-bottom: 28px;
     animation: fadeUp 0.6s ease backwards;
   }
 
-  .field:nth-child(1) { animation-delay: 0.05s; }
-  .field:nth-child(2) { animation-delay: 0.1s; }
-  .field:nth-child(3) { animation-delay: 0.15s; }
-  .field:nth-child(4) { animation-delay: 0.2s; }
-  .field:nth-child(5) { animation-delay: 0.25s; }
-  .field:nth-child(6) { animation-delay: 0.3s; }
-  .field:nth-child(7) { animation-delay: 0.35s; }
+  .field:nth-child(1) { animation-delay: 0.03s; }
+  .field:nth-child(2) { animation-delay: 0.06s; }
+  .field:nth-child(3) { animation-delay: 0.09s; }
+  .field:nth-child(4) { animation-delay: 0.12s; }
+  .field:nth-child(5) { animation-delay: 0.15s; }
+  .field:nth-child(6) { animation-delay: 0.18s; }
+  .field:nth-child(7) { animation-delay: 0.21s; }
+  .field:nth-child(8) { animation-delay: 0.24s; }
+  .field:nth-child(9) { animation-delay: 0.27s; }
+  .field:nth-child(10) { animation-delay: 0.30s; }
+  .field:nth-child(11) { animation-delay: 0.33s; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(12px); }
@@ -119,7 +120,7 @@
     display: flex;
     align-items: baseline;
     gap: 10px;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
 
   .label-num {
@@ -136,6 +137,19 @@
     font-weight: 600;
     line-height: 1.4;
     flex: 1;
+  }
+
+  .multi-hint {
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    margin-left: 28px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .single-hint {
+    margin-bottom: 14px;
   }
 
   /* Text input */
@@ -172,13 +186,12 @@
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.15s ease;
-    position: relative;
   }
 
   .option:hover { background: rgba(255,255,255,0.7); }
-
   .option input { display: none; }
 
+  /* Single select marker (circle) */
   .option .marker {
     width: 22px;
     height: 22px;
@@ -199,6 +212,29 @@
     transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
+  /* Multi select marker (square) */
+  .option.multi .marker {
+    border-radius: 3px;
+  }
+
+  .option.multi .marker::after {
+    border-radius: 1px;
+    inset: 3px;
+    background: transparent;
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+    width: 8px;
+    height: 14px;
+    left: 6px;
+    top: 1px;
+    transform: rotate(45deg) scale(0);
+    transform-origin: center;
+  }
+
+  .option.multi input:checked ~ .marker::after {
+    transform: rotate(45deg) scale(1);
+  }
+
   .option .letter {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
@@ -214,14 +250,14 @@
   }
 
   .option input:checked ~ .marker { border-color: var(--accent); }
-  .option input:checked ~ .marker::after { transform: scale(1); }
+  .option:not(.multi) input:checked ~ .marker::after { transform: scale(1); }
   .option:has(input:checked) {
     background: rgba(217,79,48,0.08);
     border-color: var(--accent);
   }
   .option:has(input:checked) .letter { color: var(--accent); }
 
-  /* Role selector — bigger, more prominent */
+  /* Role selector */
   .role-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -277,8 +313,6 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
     letter-spacing: 0.05em;
   }
 
@@ -377,11 +411,12 @@
     font-size: 13px;
     margin-top: 8px;
     display: none;
+    font-weight: 500;
   }
 
   .error-msg.show { display: block; }
 
-  /* Footer decoration */
+  /* Footer */
   .footer-deco {
     margin-top: 48px;
     text-align: center;
@@ -402,7 +437,6 @@
     margin: 0 12px;
   }
 
-  /* Mobile tweaks */
   @media (max-width: 380px) {
     h1 { font-size: 34px; }
     .container { padding: 24px 18px 60px; }
@@ -419,7 +453,7 @@
       <span>● LIVE</span>
     </div>
     <h1>直屬<span class="accent">配對</span><br>系統</h1>
-    <p class="subtitle">填完五題，演算法會幫你找到性格與規劃最契合的那個人。<br>請誠實作答，這是緣分的起點。</p>
+    <p class="subtitle">填完九題，演算法會幫你找到性格與規劃最契合的那個人。<br>請誠實作答，這是緣分的起點。</p>
   </div>
 
   <form id="form">
@@ -451,76 +485,142 @@
       </div>
     </div>
 
+    <!-- Q1: 交換地區 - 多選 -->
     <div class="field">
       <div class="label">
         <span class="label-num">02</span>
-        <span class="label-text">對論文的態度？</span>
+        <span class="label-text">想去哪裡交換？</span>
       </div>
-      <div class="options" data-question="q1">
-        <label class="option"><input type="radio" name="q1" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">全力以赴，想做出一篇好論文</span></label>
-        <label class="option"><input type="radio" name="q1" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">認真完成但不過勞，水準中上就好</span></label>
-        <label class="option"><input type="radio" name="q1" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">順利畢業是最高原則</span></label>
+      <div class="multi-hint">可複選 · MULTI-SELECT</div>
+      <div class="options" data-question="q1" data-multi="true">
+        <label class="option multi"><input type="checkbox" name="q1" value="A"><span class="marker"></span><span class="letter">A</span><span class="text">北歐</span></label>
+        <label class="option multi"><input type="checkbox" name="q1" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">西歐</span></label>
+        <label class="option multi"><input type="checkbox" name="q1" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">南歐</span></label>
+        <label class="option multi"><input type="checkbox" name="q1" value="D"><span class="marker"></span><span class="letter">D</span><span class="text">東歐</span></label>
+        <label class="option multi"><input type="checkbox" name="q1" value="E"><span class="marker"></span><span class="letter">E</span><span class="text">其他</span></label>
       </div>
     </div>
 
+    <!-- Q2: HR 領域 - 多選 -->
     <div class="field">
       <div class="label">
         <span class="label-num">03</span>
-        <span class="label-text">最想去哪裡交換？</span>
+        <span class="label-text">對哪種人資功能有興趣？</span>
       </div>
-      <div class="options" data-question="q2">
-        <label class="option"><input type="radio" name="q2" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">北歐</span></label>
-        <label class="option"><input type="radio" name="q2" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">西歐</span></label>
-        <label class="option"><input type="radio" name="q2" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">南歐</span></label>
-        <label class="option"><input type="radio" name="q2" value="D"><span class="marker"></span><span class="letter">D</span><span class="text">東歐</span></label>
-        <label class="option"><input type="radio" name="q2" value="E"><span class="marker"></span><span class="letter">E</span><span class="text">其他（亞洲／美洲／大洋洲等）</span></label>
+      <div class="multi-hint">可複選 · MULTI-SELECT</div>
+      <div class="options" data-question="q2" data-multi="true">
+        <label class="option multi"><input type="checkbox" name="q2" value="A"><span class="marker"></span><span class="letter">A</span><span class="text">招募任用</span></label>
+        <label class="option multi"><input type="checkbox" name="q2" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">訓練發展</span></label>
+        <label class="option multi"><input type="checkbox" name="q2" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">員工關係</span></label>
+        <label class="option multi"><input type="checkbox" name="q2" value="D"><span class="marker"></span><span class="letter">D</span><span class="text">薪酬管理</span></label>
+        <label class="option multi"><input type="checkbox" name="q2" value="E"><span class="marker"></span><span class="letter">E</span><span class="text">雇主品牌</span></label>
+        <label class="option multi"><input type="checkbox" name="q2" value="F"><span class="marker"></span><span class="letter">F</span><span class="text">組織規劃</span></label>
+        <label class="option multi"><input type="checkbox" name="q2" value="G"><span class="marker"></span><span class="letter">G</span><span class="text">數據分析</span></label>
+        <label class="option multi"><input type="checkbox" name="q2" value="H"><span class="marker"></span><span class="letter">H</span><span class="text">其他</span></label>
       </div>
     </div>
 
+    <!-- Q3: 實習產業 - 多選 -->
     <div class="field">
       <div class="label">
         <span class="label-num">04</span>
-        <span class="label-text">對哪個 HR 領域最感興趣？</span>
+        <span class="label-text">未來實習偏好哪些產業？</span>
       </div>
-      <div class="options" data-question="q3">
-        <label class="option"><input type="radio" name="q3" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">招募任用</span></label>
-        <label class="option"><input type="radio" name="q3" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">訓練發展</span></label>
-        <label class="option"><input type="radio" name="q3" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">員工關係</span></label>
-        <label class="option"><input type="radio" name="q3" value="D"><span class="marker"></span><span class="letter">D</span><span class="text">薪酬管理</span></label>
-        <label class="option"><input type="radio" name="q3" value="E"><span class="marker"></span><span class="letter">E</span><span class="text">雇主品牌</span></label>
-        <label class="option"><input type="radio" name="q3" value="F"><span class="marker"></span><span class="letter">F</span><span class="text">組織規劃</span></label>
-        <label class="option"><input type="radio" name="q3" value="G"><span class="marker"></span><span class="letter">G</span><span class="text">數據分析（HR Analytics）</span></label>
-        <label class="option"><input type="radio" name="q3" value="H"><span class="marker"></span><span class="letter">H</span><span class="text">都有興趣／還在探索</span></label>
+      <div class="multi-hint">可複選 · MULTI-SELECT</div>
+      <div class="options" data-question="q3" data-multi="true">
+        <label class="option multi"><input type="checkbox" name="q3" value="A"><span class="marker"></span><span class="letter">A</span><span class="text">科技業</span></label>
+        <label class="option multi"><input type="checkbox" name="q3" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">金融業</span></label>
+        <label class="option multi"><input type="checkbox" name="q3" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">傳產</span></label>
+        <label class="option multi"><input type="checkbox" name="q3" value="D"><span class="marker"></span><span class="letter">D</span><span class="text">顧問業</span></label>
+        <label class="option multi"><input type="checkbox" name="q3" value="E"><span class="marker"></span><span class="letter">E</span><span class="text">其他</span></label>
       </div>
     </div>
 
+    <!-- Q4: 工作經驗 - 單選 -->
     <div class="field">
       <div class="label">
         <span class="label-num">05</span>
-        <span class="label-text">實習想去哪個產業？</span>
+        <span class="label-text">有無工作經驗？</span>
       </div>
+      <div class="single-hint"></div>
       <div class="options" data-question="q4">
-        <label class="option"><input type="radio" name="q4" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">科技業</span></label>
-        <label class="option"><input type="radio" name="q4" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">金融業</span></label>
-        <label class="option"><input type="radio" name="q4" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">傳統產業</span></label>
-        <label class="option"><input type="radio" name="q4" value="D"><span class="marker"></span><span class="letter">D</span><span class="text">顧問業</span></label>
-        <label class="option"><input type="radio" name="q4" value="E"><span class="marker"></span><span class="letter">E</span><span class="text">其他</span></label>
+        <label class="option"><input type="radio" name="q4" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">有（正職）</span></label>
+        <label class="option"><input type="radio" name="q4" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">無</span></label>
+        <label class="option"><input type="radio" name="q4" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">有實習</span></label>
       </div>
     </div>
 
+    <!-- Q5: 作息 - 單選 -->
     <div class="field">
       <div class="label">
         <span class="label-num">06</span>
-        <span class="label-text">未來想當人資長（CHRO）嗎？</span>
+        <span class="label-text">我的日常作息為…</span>
       </div>
+      <div class="single-hint"></div>
       <div class="options" data-question="q5">
-        <label class="option"><input type="radio" name="q5" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">想，這是我的目標</span></label>
-        <label class="option"><input type="radio" name="q5" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">不想，我有別的規劃</span></label>
-        <label class="option"><input type="radio" name="q5" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">還沒想清楚／隨緣</span></label>
+        <label class="option"><input type="radio" name="q5" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">夜貓子</span></label>
+        <label class="option"><input type="radio" name="q5" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">正常作息</span></label>
       </div>
     </div>
 
-    <div class="error-msg" id="error">請完整填寫所有題目</div>
+    <!-- Q6: 週末 - 單選 -->
+    <div class="field">
+      <div class="label">
+        <span class="label-num">07</span>
+        <span class="label-text">我週末喜歡…</span>
+      </div>
+      <div class="single-hint"></div>
+      <div class="options" data-question="q6">
+        <label class="option"><input type="radio" name="q6" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">宅在家</span></label>
+        <label class="option"><input type="radio" name="q6" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">戶外咖</span></label>
+      </div>
+    </div>
+
+    <!-- Q7: 辦公地點 - 單選 -->
+    <div class="field">
+      <div class="label">
+        <span class="label-num">08</span>
+        <span class="label-text">喜歡在哪辦公／讀書？</span>
+      </div>
+      <div class="single-hint"></div>
+      <div class="options" data-question="q7">
+        <label class="option"><input type="radio" name="q7" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">圖書館／自修室</span></label>
+        <label class="option"><input type="radio" name="q7" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">咖啡廳</span></label>
+        <label class="option"><input type="radio" name="q7" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">在家最舒服</span></label>
+      </div>
+    </div>
+
+    <!-- Q8: 運動 - 單選 -->
+    <div class="field">
+      <div class="label">
+        <span class="label-num">09</span>
+        <span class="label-text">有無運動習慣？</span>
+      </div>
+      <div class="single-hint"></div>
+      <div class="options" data-question="q8">
+        <label class="option"><input type="radio" name="q8" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">超愛運動</span></label>
+        <label class="option"><input type="radio" name="q8" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">偶爾動動</span></label>
+        <label class="option"><input type="radio" name="q8" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">躺著不好嗎</span></label>
+      </div>
+    </div>
+
+    <!-- Q9: 家鄉 - 單選 -->
+    <div class="field">
+      <div class="label">
+        <span class="label-num">10</span>
+        <span class="label-text">來自哪裡？</span>
+      </div>
+      <div class="single-hint"></div>
+      <div class="options" data-question="q9">
+        <label class="option"><input type="radio" name="q9" value="A" required><span class="marker"></span><span class="letter">A</span><span class="text">北部</span></label>
+        <label class="option"><input type="radio" name="q9" value="B"><span class="marker"></span><span class="letter">B</span><span class="text">中部</span></label>
+        <label class="option"><input type="radio" name="q9" value="C"><span class="marker"></span><span class="letter">C</span><span class="text">南部</span></label>
+        <label class="option"><input type="radio" name="q9" value="D"><span class="marker"></span><span class="letter">D</span><span class="text">東部</span></label>
+        <label class="option"><input type="radio" name="q9" value="E"><span class="marker"></span><span class="letter">E</span><span class="text">離島</span></label>
+      </div>
+    </div>
+
+    <div class="error-msg" id="error">請完整填寫所有題目（多選題至少要選一項）</div>
 
     <div class="submit-wrap">
       <button type="submit" class="submit" id="submit">
@@ -547,7 +647,7 @@
 
 <script>
   // ⚠️ 把這裡換成你部署 Google Apps Script 後拿到的網址
-  const API_URL = 'https://script.google.com/macros/s/AKfycbzALl0iPDP_CmxAJYcX0V_4vxoYAsfiYBs3WItlGYTPcT8-UNwh-MVlw54PT__F0-aUrg/exec';
+  const API_URL = 'https://script.google.com/macros/s/AKfycbzaQy9j6rdvQIsxpNcQbKbfbJvyr-Ndbg20txvNvba5A5y1kU-2h23rm4EXJyJWRWN25w/exec';
 
   const form = document.getElementById('form');
   const submitBtn = document.getElementById('submit');
@@ -555,20 +655,34 @@
   const errorMsg = document.getElementById('error');
   const success = document.getElementById('success');
 
+  function getMultiValues(name) {
+    const inputs = form.querySelectorAll(`input[name="${name}"]:checked`);
+    return Array.from(inputs).map(i => i.value).join(',');
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     errorMsg.classList.remove('show');
 
     const name = document.getElementById('name').value.trim();
-    const role = form.role.value;
-    const q1 = form.q1.value;
-    const q2 = form.q2.value;
-    const q3 = form.q3.value;
+    const role = form.role && form.role.value;
+
+    // 多選題
+    const q1 = getMultiValues('q1');
+    const q2 = getMultiValues('q2');
+    const q3 = getMultiValues('q3');
+
+    // 單選題
     const q4 = form.q4.value;
     const q5 = form.q5.value;
+    const q6 = form.q6.value;
+    const q7 = form.q7.value;
+    const q8 = form.q8.value;
+    const q9 = form.q9.value;
 
-    if (!name || !role || !q1 || !q2 || !q3 || !q4 || !q5) {
+    if (!name || !role || !q1 || !q2 || !q3 || !q4 || !q5 || !q6 || !q7 || !q8 || !q9) {
       errorMsg.classList.add('show');
+      errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
@@ -577,12 +691,12 @@
 
     const payload = {
       action: 'submit',
-      name, role, q1, q2, q3, q4, q5,
+      name, role,
+      q1, q2, q3, q4, q5, q6, q7, q8, q9,
       timestamp: new Date().toISOString()
     };
 
     try {
-      // 注意:使用 no-cors 模式繞過 CORS,但無法讀取回應
       await fetch(API_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -590,7 +704,6 @@
         body: JSON.stringify(payload)
       });
 
-      // 顯示成功畫面
       const now = new Date();
       const hh = String(now.getHours()).padStart(2, '0');
       const mm = String(now.getMinutes()).padStart(2, '0');
