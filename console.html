@@ -44,7 +44,6 @@
     padding: 40px 32px 80px;
   }
 
-  /* Header */
   .top {
     display: flex;
     justify-content: space-between;
@@ -63,9 +62,7 @@
     line-height: 1;
     letter-spacing: -0.02em;
   }
-
   .top-left h1 .em { color: var(--accent); font-style: italic; }
-
   .top-left .sub {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
@@ -74,27 +71,16 @@
     text-transform: uppercase;
     margin-top: 8px;
   }
-
-  .top-right {
-    display: flex;
-    gap: 32px;
-    align-items: flex-end;
-  }
-
-  .stat {
-    text-align: right;
-  }
-
+  .top-right { display: flex; gap: 32px; align-items: flex-end; }
+  .stat { text-align: right; }
   .stat .num {
     font-family: 'Noto Serif TC', serif;
     font-size: 40px;
     font-weight: 900;
     line-height: 1;
   }
-
   .stat .num.s { color: var(--accent-2); }
   .stat .num.j { color: var(--accent); }
-
   .stat .label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -103,14 +89,12 @@
     margin-top: 4px;
   }
 
-  /* Controls */
   .controls {
     display: flex;
     gap: 12px;
     margin-bottom: 32px;
     flex-wrap: wrap;
   }
-
   .btn {
     padding: 12px 24px;
     background: transparent;
@@ -123,30 +107,17 @@
     transition: all 0.2s;
     letter-spacing: 0.05em;
   }
-
   .btn:hover { background: var(--ink); color: var(--paper); }
-
-  .btn.primary {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-  }
-
-  .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
-
   .btn.danger { border-color: var(--accent); color: var(--accent); }
   .btn.danger:hover { background: var(--accent); color: var(--paper); }
-
   .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  /* Lists */
   .columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     margin-bottom: 40px;
   }
-
   @media (max-width: 720px) {
     .columns { grid-template-columns: 1fr; }
     .top-left h1 { font-size: 36px; }
@@ -158,7 +129,6 @@
     padding: 24px;
     border: 1px solid var(--line);
   }
-
   .col-title {
     display: flex;
     justify-content: space-between;
@@ -167,19 +137,16 @@
     border-bottom: 1px solid var(--line);
     margin-bottom: 16px;
   }
-
   .col-title h3 {
     font-family: 'Noto Serif TC', serif;
     font-size: 20px;
     font-weight: 600;
   }
-
   .col-title .count {
     font-family: 'DM Mono', monospace;
     font-size: 13px;
     color: var(--muted);
   }
-
   .name-list {
     list-style: none;
     display: flex;
@@ -187,22 +154,18 @@
     gap: 8px;
     min-height: 60px;
   }
-
   .name-list li {
     padding: 6px 12px;
     background: var(--paper);
     border: 1px solid var(--line);
     font-size: 14px;
-    font-family: 'Noto Sans TC', sans-serif;
   }
-
   .empty-hint {
     color: var(--muted);
     font-size: 13px;
     font-style: italic;
   }
 
-  /* Match button area */
   .match-section {
     text-align: center;
     margin: 60px 0;
@@ -210,7 +173,6 @@
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
-
   .big-btn {
     padding: 24px 64px;
     background: var(--ink);
@@ -222,34 +184,18 @@
     cursor: pointer;
     letter-spacing: 0.1em;
     transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
   }
-
   .big-btn:not(:disabled):hover {
     background: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(217,79,48,0.25);
   }
-
   .big-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  .match-hint {
-    margin-top: 16px;
-    font-size: 13px;
-    color: var(--muted);
-  }
+  .match-hint { margin-top: 16px; font-size: 13px; color: var(--muted); }
 
   /* Results */
-  .results {
-    margin-top: 40px;
-  }
-
-  .results-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
+  .results { margin-top: 40px; }
+  .results-header { text-align: center; margin-bottom: 24px; }
   .results-header .tag {
     display: inline-block;
     font-family: 'DM Mono', monospace;
@@ -258,7 +204,6 @@
     letter-spacing: 0.2em;
     margin-bottom: 8px;
   }
-
   .results-header h2 {
     font-family: 'Noto Serif TC', serif;
     font-size: 36px;
@@ -266,134 +211,121 @@
     letter-spacing: -0.01em;
   }
 
-  .match-card {
-    background: rgba(255,255,255,0.5);
+  .scenario-banner {
+    background: rgba(45,74,62,0.08);
+    border-left: 3px solid var(--accent-2);
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: var(--accent-2);
+    line-height: 1.7;
+  }
+  .scenario-banner strong { font-weight: 700; }
+
+  .bulk-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* New pair display */
+  .pair-row {
+    background: rgba(255,255,255,0.55);
     border: 1px solid var(--ink);
-    padding: 28px;
-    margin-bottom: 16px;
-    position: relative;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
     animation: slideUp 0.5s ease backwards;
   }
 
   @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .match-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px dashed var(--line);
-  }
-
-  .pair {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .pair-name {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 26px;
-    font-weight: 700;
-  }
-
-  .pair-name.senior { color: var(--accent-2); }
-  .pair-name.junior { color: var(--accent); }
-
-  .pair .heart {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .pair .heart svg { width: 100%; height: 100%; fill: var(--gold); }
-
-  .pair .role-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-  }
-
-  .pair-side { display: flex; flex-direction: column; }
-
-  .score {
-    text-align: right;
-  }
-
-  .score .big {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 42px;
-    font-weight: 900;
-    line-height: 1;
-    color: var(--accent);
-  }
-
-  .score .lbl {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-  }
-
-  .match-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .match-row {
+  .pair-row .anchor {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 14px;
+    min-width: 0;
+    flex-shrink: 0;
   }
 
-  .match-row.hit {
-    color: var(--ink);
+  .pair-row .anchor-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 700;
   }
+  .pair-row .anchor-name.senior { color: var(--accent-2); }
+  .pair-row .anchor-name.junior { color: var(--accent); }
 
-  .match-row.miss {
+  .pair-row .anchor-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
     color: var(--muted);
-    opacity: 0.6;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
   }
 
-  .match-row .icon {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
+  .pair-row .connector {
+    color: var(--gold);
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .pair-row .partners {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 11px;
-    font-weight: 700;
-    font-family: 'DM Mono', monospace;
+    gap: 10px;
+    flex: 1;
+    flex-wrap: wrap;
+    min-width: 0;
   }
 
-  .match-row.hit .icon {
-    background: var(--accent);
+  .partner-chip {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 6px 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+
+  .partner-chip.senior { color: var(--accent-2); border-left: 3px solid var(--accent-2); }
+  .partner-chip.junior { color: var(--accent); border-left: 3px solid var(--accent); }
+
+  .partner-chip.double {
+    background: rgba(184,137,58,0.12);
+    border-color: var(--gold);
+    border-left: 3px solid var(--gold);
+  }
+
+  .double-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    background: var(--gold);
     color: white;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    font-weight: 700;
   }
 
-  .match-row.miss .icon {
-    background: transparent;
-    border: 1px solid var(--muted);
+  .partners-plus {
     color: var(--muted);
+    font-weight: 700;
+    margin: 0 2px;
   }
-
-  .match-row .q { font-weight: 500; min-width: 100px; }
-  .match-row .ans { color: var(--muted); font-size: 13px; }
-  .match-row.hit .ans { color: var(--accent-2); font-weight: 500; }
 
   .unmatched {
     margin-top: 40px;
@@ -401,13 +333,11 @@
     background: rgba(255,255,255,0.3);
     border: 1px dashed var(--line);
   }
-
   .unmatched h3 {
     font-family: 'Noto Serif TC', serif;
     font-size: 18px;
     margin-bottom: 12px;
   }
-
   .unmatched p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
 
   .toast {
@@ -422,7 +352,6 @@
     transform: translateX(120%);
     transition: transform 0.3s;
   }
-
   .toast.show { transform: translateX(0); }
 
   .loader {
@@ -436,7 +365,6 @@
     margin-right: 8px;
     vertical-align: -2px;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .config-warn {
@@ -460,13 +388,13 @@
 <div class="wrap">
 
   <div id="warn" class="config-warn" style="display:none;">
-    ⚠️ 尚未設定 API 網址。請打開 HTML 檔案，把 <code>API_URL</code> 那行換成你 Google Apps Script 部署後得到的網址。
+    ⚠️ 尚未設定 API 網址。請打開 HTML 檔案,把 <code>API_URL</code> 那行換成你 Google Apps Script 部署後得到的網址。
   </div>
 
   <div class="top">
     <div class="top-left">
       <h1>配對<span class="em">控制台</span></h1>
-      <div class="sub">Matching Console · Live Status</div>
+      <div class="sub">Matching Console · Admin Only</div>
     </div>
     <div class="top-right">
       <div class="stat">
@@ -482,7 +410,7 @@
 
   <div class="controls">
     <button class="btn" id="refresh-btn">↻ 更新名單</button>
-    <button class="btn" id="auto-refresh-btn">自動更新：關閉</button>
+    <button class="btn" id="auto-refresh-btn">自動更新:關閉</button>
     <button class="btn danger" id="reset-btn" style="margin-left: auto;">清空所有資料</button>
   </div>
 
@@ -518,12 +446,21 @@
   <div class="results" id="results" style="display:none;">
     <div class="results-header">
       <div class="tag">★ MATCHING COMPLETE ★</div>
-      <h2>配對結果揭曉</h2>
+      <h2>配對結果</h2>
     </div>
+
+    <div class="scenario-banner" id="scenario-banner"></div>
+
+    <div class="bulk-actions">
+      <button class="btn" id="copy-btn">📋 複製配對清單</button>
+      <button class="btn" id="download-btn">⬇ 下載 CSV</button>
+    </div>
+
     <div id="results-list"></div>
+
     <div class="unmatched" id="unmatched-box" style="display:none;">
-      <h3>未配對到的學長姊</h3>
-      <p>當學弟妹人數不足時，吻合度較低的學長姊會在此列出。</p>
+      <h3 id="unmatched-title">未配對到的成員</h3>
+      <p id="unmatched-desc">人數不均時部分成員不會配到對象,列在這裡。</p>
       <ul class="name-list" id="unmatched-list"></ul>
     </div>
   </div>
@@ -533,50 +470,28 @@
 
 <script>
   // ⚠️ 把這裡換成你部署 Google Apps Script 後拿到的網址
-  const API_URL = 'https://script.google.com/macros/s/AKfycbzALl0iPDP_CmxAJYcX0V_4vxoYAsfiYBs3WItlGYTPcT8-UNwh-MVlw54PT__F0-aUrg/exec';
+  const API_URL = 'https://script.google.com/macros/s/AKfycbzaQy9j6rdvQIsxpNcQbKbfbJvyr-Ndbg20txvNvba5A5y1kU-2h23rm4EXJyJWRWN25w/exec';
 
-  // ---------- 題目對照表（用來顯示「在哪題吻合」） ----------
-  const QUESTIONS = {
-    q1: {
-      title: '論文態度',
-      options: {
-        A: '全力以赴',
-        B: '中上水準',
-        C: '順利畢業'
-      }
-    },
-    q2: {
-      title: '交換地區',
-      options: {
-        A: '北歐', B: '西歐', C: '南歐', D: '東歐', E: '其他'
-      }
-    },
-    q3: {
-      title: 'HR 領域',
-      options: {
-        A: '招募任用', B: '訓練發展', C: '員工關係', D: '薪酬管理',
-        E: '雇主品牌', F: '組織規劃', G: '數據分析', H: '都有興趣'
-      }
-    },
-    q4: {
-      title: '實習產業',
-      options: {
-        A: '科技業', B: '金融業', C: '傳統產業', D: '顧問業', E: '其他'
-      }
-    },
-    q5: {
-      title: '人資長志向',
-      options: {
-        A: '想當', B: '不想', C: '隨緣'
-      }
-    }
+  // ============================================
+  // 題目設定:權重、是否多選、多選的加分增量
+  // ============================================
+  const QUESTION_CONFIG = {
+    q1: { multi: true,  baseScore: 1.5, bonusPerExtra: 0.2  }, // 交換地區
+    q2: { multi: true,  baseScore: 1.5, bonusPerExtra: 0.15 }, // HR 領域
+    q3: { multi: true,  baseScore: 1.5, bonusPerExtra: 0.2  }, // 實習產業
+    q4: { multi: false, baseScore: 1.5 }, // 工作經驗(有特殊處理)
+    q5: { multi: false, baseScore: 1.2 }, // 作息
+    q6: { multi: false, baseScore: 1.2 }, // 週末
+    q7: { multi: false, baseScore: 1.1 }, // 辦公地點
+    q8: { multi: false, baseScore: 1.1 }, // 運動
+    q9: { multi: false, baseScore: 1.0 }  // 家鄉
   };
 
   // ---------- 狀態 ----------
   let allData = [];
+  let lastMatchResult = null;
   let autoRefreshTimer = null;
 
-  // ---------- DOM ----------
   const $ = (id) => document.getElementById(id);
   const seniorList = $('senior-list'), juniorList = $('junior-list');
   const matchBtn = $('match-btn'), matchText = $('match-text'), matchHint = $('match-hint');
@@ -584,7 +499,7 @@
   const results = $('results'), resultsList = $('results-list');
   const unmatchedBox = $('unmatched-box'), unmatchedList = $('unmatched-list');
 
-  // ---------- API 呼叫 ----------
+  // ---------- API ----------
   async function fetchData() {
     if (API_URL.includes('PASTE_YOUR')) {
       $('warn').style.display = 'block';
@@ -595,13 +510,13 @@
       const data = await res.json();
       return data.entries || [];
     } catch (e) {
-      toast('讀取失敗：' + e.message);
+      toast('讀取失敗:' + e.message);
       return [];
     }
   }
 
   async function clearAll() {
-    if (!confirm('真的要清空所有填答資料嗎？此動作無法復原。')) return;
+    if (!confirm('真的要清空所有填答資料嗎?此動作無法復原。')) return;
     try {
       await fetch(API_URL, {
         method: 'POST',
@@ -610,13 +525,14 @@
         body: JSON.stringify({ action: 'clear' })
       });
       toast('已清空');
+      results.style.display = 'none';
+      lastMatchResult = null;
       setTimeout(refresh, 1000);
     } catch (e) {
-      toast('清空失敗：' + e.message);
+      toast('清空失敗:' + e.message);
     }
   }
 
-  // ---------- UI 更新 ----------
   async function refresh() {
     refreshBtn.disabled = true;
     const oldText = refreshBtn.textContent;
@@ -657,154 +573,279 @@
     return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
-  // ---------- 配對演算法 ----------
-  // 計算兩人的吻合題數（最多 5 題）
-  function calcMatch(a, b) {
-    const qs = ['q1','q2','q3','q4','q5'];
-    const matches = [];
-    let score = 0;
-    qs.forEach(q => {
-      const hit = a[q] === b[q];
-      if (hit) score++;
-      matches.push({ q, hit, aAns: a[q], bAns: b[q] });
-    });
-    return { score, matches };
+  // ============================================
+  // 計分邏輯
+  // ============================================
+
+  // 將多選值字串轉成陣列 (例如 "A,C,E" → ["A","C","E"])
+  function parseMulti(val) {
+    if (!val) return [];
+    return String(val).split(',').map(s => s.trim()).filter(Boolean);
   }
 
-  // 主要配對邏輯
-  // 規則:
-  //  - 每位學弟妹一定有配對(只要有學長姊在)
-  //  - 學長姊優先一人配一位學弟妹
-  //  - 學弟妹比學長姊多時,部分學長姊配兩位
-  //  - 學長姊比學弟妹多時,有些學長姊不會被配到
+  // 兩集合的交集大小
+  function intersectCount(arrA, arrB) {
+    const setB = new Set(arrB);
+    let count = 0;
+    arrA.forEach(x => { if (setB.has(x)) count++; });
+    return count;
+  }
+
+  // 計算單題分數
+  function scoreQuestion(qKey, aVal, bVal) {
+    const cfg = QUESTION_CONFIG[qKey];
+
+    if (cfg.multi) {
+      // 多選題
+      const aSet = parseMulti(aVal);
+      const bSet = parseMulti(bVal);
+      const overlap = intersectCount(aSet, bSet);
+      if (overlap === 0) return 0;
+      return cfg.baseScore + (overlap - 1) * cfg.bonusPerExtra;
+    }
+
+    if (qKey === 'q4') {
+      // 工作經驗特殊處理: A=有, B=無, C=有實習
+      // 完全相同 → 滿分
+      // (A,C) 或 (C,A) 視為「都有經驗」→ 半分
+      // 其他 → 0
+      if (aVal === bVal) return cfg.baseScore;
+      const both = [aVal, bVal].sort().join('');
+      if (both === 'AC') return cfg.baseScore * 0.5;
+      return 0;
+    }
+
+    // 其他單選題
+    return aVal === bVal ? cfg.baseScore : 0;
+  }
+
+  // 計算兩人總分
+  function calcPairScore(a, b) {
+    let total = 0;
+    Object.keys(QUESTION_CONFIG).forEach(qKey => {
+      total += scoreQuestion(qKey, a[qKey], b[qKey]);
+    });
+    return total;
+  }
+
+  // ============================================
+  // 配對演算法
+  // ============================================
   function runMatching(seniors, juniors) {
-    // 先建立所有可能配對及其分數
-    const pairs = [];
-    juniors.forEach(j => {
-      seniors.forEach(s => {
-        const m = calcMatch(j, s);
-        pairs.push({ junior: j, senior: s, score: m.score, matches: m.matches });
+    const sCount = seniors.length;
+    const jCount = juniors.length;
+
+    // 計算所有 (senior, junior) 配對的分數
+    const allPairs = [];
+    seniors.forEach(s => {
+      juniors.forEach(j => {
+        allPairs.push({ senior: s, junior: j, score: calcPairScore(s, j) });
       });
     });
 
-    // 按分數高→低排序;同分時隨機(用 timestamp 增加變化)
-    pairs.sort((a, b) => {
+    // 同分隨機洗牌再排序
+    allPairs.sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
       return Math.random() - 0.5;
     });
 
-    const seniorAssignCount = {}; // senior.name -> 已被指派幾次
-    const juniorAssigned = {};    // junior.name -> 是否已配到
-    const result = [];
+    let scenario; // 'equal' | 'more_seniors' | 'more_juniors'
+    const assignments = []; // 最終配對結果
+    const unmatched = [];
 
-    // 計算每位學長姊最多可帶幾位學弟妹
-    const baseQuota = Math.floor(juniors.length / seniors.length); // 至少幾位
-    const extraQuota = juniors.length % seniors.length; // 有幾位學長姊要多帶 1 位
-    // 若學長姊比學弟妹多: baseQuota=0, extraQuota=juniors.length
-    //   → extraQuota 位學長姊各帶 1 位,其餘 0 位
-    // 若相等: baseQuota=1, extraQuota=0 → 每人各帶 1
-    // 若學弟妹較多: baseQuota=1, extraQuota=juniors.length-seniors.length
-    //   → extraQuota 位學長姊帶 2,其餘帶 1
+    if (sCount === jCount) {
+      // ---------- 情境 1:人數相同,一對一 ----------
+      scenario = 'equal';
+      const seniorUsed = new Set();
+      const juniorUsed = new Set();
 
-    const maxPerSenior = baseQuota + (extraQuota > 0 ? 1 : 0);
-
-    // 第一輪:確保每位學弟妹都有配對
-    let seniorsWithExtra = 0; // 已有幾位學長姊拿到 extra 配額
-
-    for (const pair of pairs) {
-      const jn = pair.junior.name;
-      const sn = pair.senior.name;
-
-      if (juniorAssigned[jn]) continue;
-
-      const currentCount = seniorAssignCount[sn] || 0;
-
-      // 決定這位學長姊目前的容量上限
-      let quota;
-      if (baseQuota === 0) {
-        // 學長姊比學弟妹多:每位最多 1 位,且只有 extraQuota 位可被配到
-        quota = 1;
-        if (currentCount >= 1) continue;
-        // 限制只有特定數量的學長姊可以被配到
-        if (currentCount === 0 && Object.keys(seniorAssignCount).length >= extraQuota) continue;
-      } else {
-        // 學弟妹≥學長姊:每位至少 baseQuota,部分人帶 baseQuota+1
-        if (currentCount >= baseQuota) {
-          // 已達基本配額,看能否升級為 extra
-          if (currentCount >= baseQuota + 1) continue;
-          if (seniorsWithExtra >= extraQuota) continue;
-          // 可以給 extra
-          seniorsWithExtra++;
-        }
+      for (const p of allPairs) {
+        if (seniorUsed.has(p.senior.name) || juniorUsed.has(p.junior.name)) continue;
+        assignments.push({ senior: p.senior, junior: p.junior });
+        seniorUsed.add(p.senior.name);
+        juniorUsed.add(p.junior.name);
+        if (assignments.length === sCount) break;
       }
 
-      result.push(pair);
-      seniorAssignCount[sn] = currentCount + 1;
-      juniorAssigned[jn] = true;
+    } else if (sCount > jCount) {
+      // ---------- 情境 2:學長姊多 → 同一位學弟妹至多配到 2 位學長姊 ----------
+      // 規則: 每位學弟妹基本配 1 位學長姊,超出的學長姊(extras=sCount-jCount)
+      // 會去找「跟某位學弟妹最高吻合」的去配,被該學弟妹「再認」
+      scenario = 'more_seniors';
+
+      // 為每位學弟妹建立「依分數排序的學長姊清單」
+      const juniorPrefs = {}; // junior.name -> [{senior, score}, ...] sorted desc
+      juniors.forEach(j => {
+        const list = seniors
+          .map(s => ({ senior: s, score: calcPairScore(s, j) }))
+          .sort((a, b) => {
+            if (b.score !== a.score) return b.score - a.score;
+            return Math.random() - 0.5;
+          });
+        juniorPrefs[j.name] = list;
+      });
+
+      // 用 stable matching 風格: 每位學長姊嘗試「卡位」到他最配的學弟妹
+      // 但每位學弟妹最多收 2 位
+      // 做法: 把所有配對按分數排,依序檢查能不能加入
+      const juniorAssignCount = {}; // junior.name -> count
+      const seniorUsed = new Set();
+      juniors.forEach(j => juniorAssignCount[j.name] = 0);
+
+      // 第一輪: 確保每位學弟妹至少有 1 位
+      for (const p of allPairs) {
+        if (seniorUsed.has(p.senior.name)) continue;
+        if (juniorAssignCount[p.junior.name] >= 1) continue;
+        assignments.push({ senior: p.senior, junior: p.junior });
+        seniorUsed.add(p.senior.name);
+        juniorAssignCount[p.junior.name] = 1;
+        if (Object.values(juniorAssignCount).every(c => c >= 1)) break;
+      }
+
+      // 第二輪: 把剩下的學長姊配給「跟他最高吻合且尚未滿員」的學弟妹
+      // 重新計算「剩餘學長姊 × 學弟妹」並按分數排
+      const remainingPairs = allPairs.filter(p => !seniorUsed.has(p.senior.name));
+      for (const p of remainingPairs) {
+        if (seniorUsed.has(p.senior.name)) continue;
+        if (juniorAssignCount[p.junior.name] >= 2) continue;
+        assignments.push({ senior: p.senior, junior: p.junior });
+        seniorUsed.add(p.senior.name);
+        juniorAssignCount[p.junior.name]++;
+      }
+
+      // 還沒被配到的學長姊
+      seniors.forEach(s => {
+        if (!seniorUsed.has(s.name)) unmatched.push({ ...s, role: 'senior' });
+      });
+
+    } else {
+      // ---------- 情境 3:學弟妹多 → 同一位學長姊至多配到 2 位學弟妹 ----------
+      scenario = 'more_juniors';
+
+      const seniorAssignCount = {};
+      const juniorUsed = new Set();
+      seniors.forEach(s => seniorAssignCount[s.name] = 0);
+
+      // 第一輪: 確保每位學長姊至少 1 位
+      for (const p of allPairs) {
+        if (juniorUsed.has(p.junior.name)) continue;
+        if (seniorAssignCount[p.senior.name] >= 1) continue;
+        assignments.push({ senior: p.senior, junior: p.junior });
+        juniorUsed.add(p.junior.name);
+        seniorAssignCount[p.senior.name] = 1;
+        if (Object.values(seniorAssignCount).every(c => c >= 1)) break;
+      }
+
+      // 第二輪: 剩下的學弟妹配給「跟他最高吻合且尚未滿員」的學長姊
+      const remainingPairs = allPairs.filter(p => !juniorUsed.has(p.junior.name));
+      for (const p of remainingPairs) {
+        if (juniorUsed.has(p.junior.name)) continue;
+        if (seniorAssignCount[p.senior.name] >= 2) continue;
+        assignments.push({ senior: p.senior, junior: p.junior });
+        juniorUsed.add(p.junior.name);
+        seniorAssignCount[p.senior.name]++;
+      }
+
+      // 還沒被配到的學弟妹(理論上不會發生,因為人數差不會超過學長姊*2)
+      juniors.forEach(j => {
+        if (!juniorUsed.has(j.name)) unmatched.push({ ...j, role: 'junior' });
+      });
     }
 
-    // 找出未被配到的學長姊
-    const unmatched = seniors.filter(s => !seniorAssignCount[s.name]);
-
-    // 結果排序:依配對分數高→低
-    result.sort((a, b) => b.score - a.score);
-
-    return { matches: result, unmatched };
+    return { assignments, unmatched, scenario };
   }
 
-  // ---------- 渲染配對結果 ----------
-  function renderResults(matches, unmatched) {
+  // ============================================
+  // 結果分組:依照「被配兩次的那一方」當錨點
+  // ============================================
+  function groupAssignments(assignments, scenario) {
+    // 回傳 [{ anchor: {name, role}, partners: [{name, role}, ...] }, ...]
+
+    if (scenario === 'more_seniors') {
+      // 學弟妹為錨點,可能有 1-2 位學長姊
+      const map = {}; // junior.name -> { anchor, partners }
+      assignments.forEach(a => {
+        const jn = a.junior.name;
+        if (!map[jn]) map[jn] = { anchor: { ...a.junior, role: 'junior' }, partners: [] };
+        map[jn].partners.push({ ...a.senior, role: 'senior' });
+      });
+      return Object.values(map);
+    }
+
+    if (scenario === 'more_juniors') {
+      // 學長姊為錨點,可能有 1-2 位學弟妹
+      const map = {};
+      assignments.forEach(a => {
+        const sn = a.senior.name;
+        if (!map[sn]) map[sn] = { anchor: { ...a.senior, role: 'senior' }, partners: [] };
+        map[sn].partners.push({ ...a.junior, role: 'junior' });
+      });
+      return Object.values(map);
+    }
+
+    // equal: 學長姊為錨點,每位 1 位學弟妹
+    return assignments.map(a => ({
+      anchor: { ...a.senior, role: 'senior' },
+      partners: [{ ...a.junior, role: 'junior' }]
+    }));
+  }
+
+  // ============================================
+  // 渲染結果
+  // ============================================
+  function renderResults(result) {
+    const { assignments, unmatched, scenario } = result;
+    const groups = groupAssignments(assignments, scenario);
+
+    // 情境提示文字
+    const banner = $('scenario-banner');
+    if (scenario === 'equal') {
+      banner.innerHTML = `<strong>人數均等</strong> · 每位學長姊配對到一位學弟妹,共 ${groups.length} 組。`;
+    } else if (scenario === 'more_seniors') {
+      const doubled = groups.filter(g => g.partners.length === 2).length;
+      banner.innerHTML = `<strong>學長姊較多</strong> · 共 ${groups.length} 位學弟妹,其中 ${doubled} 位學弟妹獲得 2 位學長姊的關照。`;
+    } else {
+      const doubled = groups.filter(g => g.partners.length === 2).length;
+      banner.innerHTML = `<strong>學弟妹較多</strong> · 共 ${groups.length} 位學長姊,其中 ${doubled} 位學長姊各帶 2 位學弟妹。`;
+    }
+
+    // 渲染配對列表
     resultsList.innerHTML = '';
-    matches.forEach((pair, idx) => {
-      const card = document.createElement('div');
-      card.className = 'match-card';
-      card.style.animationDelay = (idx * 0.08) + 's';
+    groups.forEach((g, idx) => {
+      const row = document.createElement('div');
+      row.className = 'pair-row';
+      row.style.animationDelay = (idx * 0.04) + 's';
 
-      const hits = pair.matches.filter(m => m.hit);
-      const detailsHtml = pair.matches.map(m => {
-        const q = QUESTIONS[m.q];
-        if (m.hit) {
-          return `<div class="match-row hit">
-            <span class="icon">✓</span>
-            <span class="q">${q.title}</span>
-            <span class="ans">同：${q.options[m.aAns]}</span>
-          </div>`;
-        } else {
-          return `<div class="match-row miss">
-            <span class="icon">·</span>
-            <span class="q">${q.title}</span>
-            <span class="ans">${q.options[m.aAns]} / ${q.options[m.bAns]}</span>
-          </div>`;
-        }
-      }).join('');
+      const anchorRoleLabel = g.anchor.role === 'senior' ? 'SENIOR · 學長姊' : 'JUNIOR · 學弟妹';
+      const isDouble = g.partners.length === 2;
 
-      card.innerHTML = `
-        <div class="match-card-top">
-          <div class="pair">
-            <div class="pair-side">
-              <span class="pair-name senior">${escapeHtml(pair.senior.name)}</span>
-              <span class="role-tag">SENIOR · 學長姊</span>
-            </div>
-            <div class="heart">
-              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </div>
-            <div class="pair-side">
-              <span class="pair-name junior">${escapeHtml(pair.junior.name)}</span>
-              <span class="role-tag">JUNIOR · 學弟妹</span>
-            </div>
-          </div>
-          <div class="score">
-            <div class="big">${pair.score}<span style="font-size:18px;color:var(--muted);">/5</span></div>
-            <div class="lbl">MATCHES</div>
-          </div>
+      const partnersHtml = g.partners.map((p, i) => {
+        const cls = p.role === 'senior' ? 'senior' : 'junior';
+        const doubleCls = isDouble ? ' double' : '';
+        const badge = isDouble && i === 0 ? '' : '';
+        return `<span class="partner-chip ${cls}${doubleCls}">${escapeHtml(p.name)}</span>`;
+      }).join('<span class="partners-plus">+</span>');
+
+      row.innerHTML = `
+        <div class="anchor">
+          <span class="anchor-name ${g.anchor.role}">${escapeHtml(g.anchor.name)}</span>
+          <span class="anchor-tag">${anchorRoleLabel}</span>
+          ${isDouble ? '<span class="double-badge">×2</span>' : ''}
         </div>
-        <div class="match-details">${detailsHtml}</div>
+        <div class="connector">↔</div>
+        <div class="partners">${partnersHtml}</div>
       `;
-      resultsList.appendChild(card);
+      resultsList.appendChild(row);
     });
 
+    // 未配對
     if (unmatched.length > 0) {
       unmatchedBox.style.display = 'block';
+      const role = unmatched[0].role;
+      $('unmatched-title').textContent = role === 'senior' ? '未配對到的學長姊' : '未配對到的學弟妹';
+      $('unmatched-desc').textContent = role === 'senior'
+        ? '學長姊人數比學弟妹多兩倍以上,部分學長姊不會配到對象。'
+        : '部分學弟妹未配對到,請檢查資料。';
       unmatchedList.innerHTML = unmatched.map(s => `<li>${escapeHtml(s.name)}</li>`).join('');
     } else {
       unmatchedBox.style.display = 'none';
@@ -814,7 +855,59 @@
     results.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // ---------- 事件綁定 ----------
+  // ============================================
+  // 匯出功能
+  // ============================================
+  function buildCopyText() {
+    if (!lastMatchResult) return '';
+    const groups = groupAssignments(lastMatchResult.assignments, lastMatchResult.scenario);
+    return groups.map(g => {
+      const anchorLabel = g.anchor.role === 'senior' ? '學長姊' : '學弟妹';
+      const partnerLabel = g.partners[0].role === 'senior' ? '學長姊' : '學弟妹';
+      const partnerNames = g.partners.map(p => p.name).join(' + ');
+      return `${g.anchor.name}（${anchorLabel}） ↔ ${partnerNames}（${partnerLabel}）`;
+    }).join('\n');
+  }
+
+  function buildCsv() {
+    if (!lastMatchResult) return '';
+    const groups = groupAssignments(lastMatchResult.assignments, lastMatchResult.scenario);
+    const rows = [['學長姊', '學弟妹', '備註']];
+    groups.forEach(g => {
+      if (g.anchor.role === 'senior') {
+        // 學長姊為錨點,partners 是學弟妹
+        const partnerNames = g.partners.map(p => p.name).join(' + ');
+        const note = g.partners.length === 2 ? '一位學長姊帶兩位學弟妹' : '';
+        rows.push([g.anchor.name, partnerNames, note]);
+      } else {
+        // 學弟妹為錨點,partners 是學長姊
+        const partnerNames = g.partners.map(p => p.name).join(' + ');
+        const note = g.partners.length === 2 ? '一位學弟妹有兩位學長姊' : '';
+        rows.push([partnerNames, g.anchor.name, note]);
+      }
+    });
+    return '\uFEFF' + rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  }
+
+  $('copy-btn').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(buildCopyText());
+      toast('已複製配對清單');
+    } catch (e) {
+      toast('複製失敗');
+    }
+  });
+
+  $('download-btn').addEventListener('click', () => {
+    const csv = buildCsv();
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `配對結果_${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+  });
+
+  // ---------- 事件 ----------
   matchBtn.addEventListener('click', () => {
     const seniors = allData.filter(d => d.role === 'senior');
     const juniors = allData.filter(d => d.role === 'junior');
@@ -823,10 +916,10 @@
     matchBtn.disabled = true;
     matchText.innerHTML = '<span class="loader"></span>演算中…';
 
-    // 加點戲劇感的延遲
     setTimeout(() => {
-      const { matches, unmatched } = runMatching(seniors, juniors);
-      renderResults(matches, unmatched);
+      const result = runMatching(seniors, juniors);
+      lastMatchResult = result;
+      renderResults(result);
       matchText.textContent = '重 新 配 對';
       matchBtn.disabled = false;
     }, 1200);
@@ -838,10 +931,10 @@
     if (autoRefreshTimer) {
       clearInterval(autoRefreshTimer);
       autoRefreshTimer = null;
-      autoBtn.textContent = '自動更新：關閉';
+      autoBtn.textContent = '自動更新:關閉';
     } else {
       autoRefreshTimer = setInterval(refresh, 5000);
-      autoBtn.textContent = '自動更新：每 5 秒';
+      autoBtn.textContent = '自動更新:每 5 秒';
       refresh();
     }
   });
@@ -855,7 +948,6 @@
     setTimeout(() => t.classList.remove('show'), 2500);
   }
 
-  // 初始化
   refresh();
 </script>
 
